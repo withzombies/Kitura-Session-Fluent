@@ -7,7 +7,7 @@ In order to use the Kitura-Session-Fluent library, create an instance of `Fluent
 
 ```swift
 import KituraSession
-import FluentSessionStore
+import KituraSessionFluent
 import FluentSQLite
 
 try! driver = SQLiteDriver()
