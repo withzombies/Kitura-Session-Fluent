@@ -27,6 +27,7 @@ public class FluentSessionStore : Store {
         public var session : String
         public var data : Data
         var alive_var : Bool = true
+        var creation : Date = Date()
         
         var expires : Date
         
@@ -51,6 +52,7 @@ public class FluentSessionStore : Store {
             expires = try Date(timeIntervalSince1970: node.extract("expires"))
             data = try Data(base64Encoded:node.extract("data"))!
             alive_var = try node.extract("alive")
+            creation = try Date(timeIntervalSince1970: node.extract("creation"))
         }
         
         public func makeNode(context: Context) throws -> Node {
@@ -60,6 +62,7 @@ public class FluentSessionStore : Store {
                 "expires": expires.timeIntervalSince1970,
                 "data" : data.base64EncodedString(),
                 "alive" : alive_var,
+                "creation" : creation.timeIntervalSince1970,
                 ])
         }
         
@@ -70,6 +73,7 @@ public class FluentSessionStore : Store {
                 users.double("expires")
                 users.data("data")
                 users.bool("alive")
+                users.double("creation")
             }
         }
         
