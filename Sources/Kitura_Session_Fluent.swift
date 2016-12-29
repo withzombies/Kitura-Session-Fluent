@@ -138,7 +138,6 @@ public class FluentSessionStore : Store {
         
         do {
             guard let first = try loadSession(sessionId: sessionId) else {
-                print("Could not retrieve session data...")
                 callback(nil, nil)
                 return
             }
